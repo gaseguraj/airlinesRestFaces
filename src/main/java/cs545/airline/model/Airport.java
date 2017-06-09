@@ -122,4 +122,9 @@ public class Airport {
 		}
 		return success;
 	}
+	
+	@Override
+	public String toString(){
+		return "ID: " + this.getId() + " Name: " + this.getName() + " Code: " + this.getAirportcode() + " Country: " + this.getCountry() + " City: " + this.getCity();
+	}
 }
