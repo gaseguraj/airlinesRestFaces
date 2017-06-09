@@ -90,4 +90,11 @@ public class Airplane {
 		}
 		return success;
 	}
+
+	@Override
+	public String toString() {
+		return "ID: " + this.getId() + " Capacity: " + this.getCapacity() + " Model: " + this.getModel() + " Serial: " + this.getSerialnr();
+	}
+	
+	
 }
