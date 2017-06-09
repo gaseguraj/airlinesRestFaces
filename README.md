@@ -1,9 +1,11 @@
-Airlines Application
+<h1>Airlines Application</h1>
 
-This Application was developed to expose Rest Services of Flights, Airlines, Airplanes and Airports, and has in the same project one part to be used with Faces.
+<p>This Application was developed to expose Rest Services for Flights, Airlines, Airplanes and Airports, also has in the same project one part to be used with Faces to make the CRUD of Airlines</p>
+<p>This project is requirement for the Course CS545 WAA - Professor Orlando Arrocha</p>
 
-The Database is Derby and use:
-
-Data Layer: Hibernate
-Service Layer: Restful
-View Layer: JSF
+<ul>
+<li>Database: Derby</li>
+<li>Data Layer: Hibernate</li>
+<li>Service Layer: Restful</li>
+<li>View Layer: JSF</li>
+</ul>
