@@ -116,13 +116,18 @@ public class FlightDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Flight> findByArrivalBetween(Date dateFrom, Date dateTo, Date timeFrom, Date timeTo) {
+		/*Query query = entityManager.createQuery(
+				"select distinct f from Flight f where f.arrivalDate between :arrivalDateFrom and :arrivalDateTo and f.arrivalTime between :arrivalTimeFrom and :arrivalTimeTo",
+				Flight.class);
+		*/
+		
 		Query query = entityManager.createQuery(
-				"select distinct f from Flight f where f.arrivalDate between :arrivalDateFrom and :arrivalDateTo and f.arrivalTime beteween :arrivalTimeFrom and :arrivalTimeTo",
+				"select distinct f from Flight f where f.arrivalDate between :arrivalDateFrom and :arrivalDateTo ",
 				Flight.class);
 		query.setParameter("arrivalDateFrom", dateFrom, TemporalType.DATE);
-		query.setParameter("arrivalTimeFrom", dateFrom, TemporalType.TIME);
-		query.setParameter("arrivalDateTo", dateTo, TemporalType.DATE);
-		query.setParameter("arrivalTimeTo", dateTo, TemporalType.TIME);
+		query.setParameter("arrivalDateTo", timeTo, TemporalType.DATE);
+		//query.setParameter("arrivalDateTo", dateTo, TemporalType.DATE);
+		//query.setParameter("arrivalTimeTo", dateTo, TemporalType.TIME);
 
 		return query.getResultList();
 	}

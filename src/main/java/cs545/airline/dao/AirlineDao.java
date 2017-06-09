@@ -40,7 +40,7 @@ public class AirlineDao {
 	public Airline findOneByName(String name) {
 		Query query = entityManager.createQuery("select a from Airline a where a.name=:name", Airline.class);
 		query.setParameter("name", name);
-
+		System.out.println("select a from Airline a where a.name=" + name);
 		return (Airline) query.getSingleResult();
 	}
 
