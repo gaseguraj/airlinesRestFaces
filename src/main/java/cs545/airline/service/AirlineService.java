@@ -45,6 +45,10 @@ public class AirlineService {
 	public Airline findByName(String name) {
 		return airlineDao.findOneByName(name);
 	}
+	
+	public Airline findById(Long id) {
+		return airlineDao.findOne(id);
+	}
 
 	public List<Airline> findByFlight(Flight flight) {
 		return airlineDao.findByFlight(flight.getId());

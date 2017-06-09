@@ -68,4 +68,12 @@ public class Airline {
 		}
 		return success;
 	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "NAME: " + this.getName() + " ID: " + this.getId();
+	}
+	
+	
 }
