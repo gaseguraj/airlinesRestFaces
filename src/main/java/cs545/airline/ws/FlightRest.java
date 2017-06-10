@@ -1,4 +1,4 @@
-package edu.mum.cs545.ws;
+package cs545.airline.ws;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -21,19 +21,9 @@ import cs545.airline.service.AirplaneService;
 import cs545.airline.service.AirportService;
 import cs545.airline.service.FlightService;
 
-/**
- * WebService RestFul to expose the services for Flight, this service belongs to
- * the project for the course CSWAA - Orlando Arrocha created on 2017/06/09
- * 
- * @author German Segura
- * @version 1.0
- */
 @Path("flight")
 public class FlightRest {
 
-	/*
-	 * Inject the Service
-	 */
 	@Inject
 	private FlightService flightService;
 	@Inject
@@ -43,30 +33,12 @@ public class FlightRest {
 	@Inject
 	private AirplaneService airplaneService;
 
-	/**
-	 * Return all the Airport objects
-	 * 
-	 * @return List of airports
-	 */
 	@GET
 	@Path("/")
 	public List<Flight> getFlights() {
 		return flightService.findAll();
 	}
 
-	/**
-	 * Return Flight List depending of the value of the parameters Type and
-	 * Value.
-	 *
-	 * @param type
-	 *            Type to find by CITY or by COUNTRY, NAME, CODE; DEPARTURE and
-	 *            ARRIVAL by number of the flight
-	 * @param value
-	 *            Value of the Type CITY, COUNTRY, NAME, DEPARTURE and ARRIVAL
-	 *            String
-	 * @return The List Flight
-	 * @throws ParseException
-	 */
 	@GET
 	@Path("/{type}/{value}")
 	public List<Flight> getBy(@PathParam("type") String type, 
@@ -102,18 +74,6 @@ public class FlightRest {
 		return flight;
 	}
 	
-	/**
-	 * Return Flight List by dates depending of the value of the parameters Type and
-	 * Value.
-	 *
-	 * @param type
-	 *            Type to find by ARR_DATES and DEP_DATES
-	 * @param value
-	 *            Value of the Type CITY, COUNTRY, NAME, DEPARTURE and ARRIVAL
-	 *            String
-	 * @return The List Flight
-	 * @throws ParseException
-	 */
 	@GET
 	@Path("/{type}/{datefrom}/{dateto}")
 	public List<Flight> getFlightByDestinyCode(@PathParam("type") String type, 
@@ -145,12 +105,6 @@ public class FlightRest {
 		return null;
 	}
 	
-	/**
-	 * Return Flight List by model of airplane
-	 *
-	 * @param model 	Model of airplane
-	 * @return The List of Flights
-	 */
 	private List<Flight> getFlightByAirplaneModel(String model) {
 		List<Airplane> listAirplane = null;
 		List<Flight> listFlights = null;
@@ -163,12 +117,6 @@ public class FlightRest {
 		return listFlights;
 	}
 
-	/**
-	 * Return Flight List by arrival dates
-	 *
-	 * @param date 	Date
-	 * @return The List of Flights
-	 */
 	private List<Flight> findByArrivalDate(String date) throws ParseException {
 		try {
 			DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
@@ -180,12 +128,6 @@ public class FlightRest {
 		return null;
 	}
 
-	/**
-	 * Return Flight List by departure dates
-	 *
-	 * @param date 	Date
-	 * @return The List of Flights
-	 */
 	private List<Flight> findByDepartureDate(String date) throws ParseException {
 		try {
 			DateFormat formatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
@@ -197,12 +139,6 @@ public class FlightRest {
 		return null;
 	}
 	
-	/**
-	 * Create a new Flight receiving in JSON format the new object
-	 *
-	 * @param  flight	Object airline in JSON Format
-	 * @return Response OK if is correct
-	 */
 	@POST
 	@Path("/")
 	public Response createFlight(Flight flight){
@@ -211,12 +147,6 @@ public class FlightRest {
 		return Response.status(200).entity("Success").build();
 	}
 	
-	/**
-	 * Update a flight, receiving the object airline by JSON format
-	 *
-	 * @param  clientFlight	Object airline in JSON Format
-	 * @return Response OK if is correct
-	 */
 	@PUT
 	@Path("/")
 	public Response updateFlight(Flight clientFlight){
@@ -231,13 +161,6 @@ public class FlightRest {
 		return Response.status(200).entity("Success").build();
 	}
 	
-	/**
-	 * Delete an airport, receiving the ID identifier
-	 * DELETE does not allow to receive a body request
-	 *
-	 * @param  id	Long id 
-	 * @return Response OK if is correct
-	 */
 	@DELETE
 	@Path("/{id}")
 	public Response deleteFlight(@PathParam("id") Long id){
