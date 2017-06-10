@@ -102,7 +102,7 @@ public class AirportRest {
 	 */
 	@PUT
 	@Path("/")
-	public Response updateAirplane(Airport clientAirport){
+	public Response updateAirport(Airport clientAirport){
 		System.out.println("Airport Update: " + clientAirport);
 		Airport airport = airportService.find(clientAirport);
 		airport.setAirportcode(clientAirport.getAirportcode());
